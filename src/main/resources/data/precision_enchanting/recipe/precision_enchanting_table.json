@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": ["XBX", "DTD", "OOO"],
+  "key": {
+    "X": "minecraft:experience_bottle",
+    "B": "minecraft:book",
+    "D": "minecraft:diamond",
+    "T": "minecraft:enchanting_table",
+    "O": "minecraft:obsidian"
+  },
+  "result": {"id": "precision_enchanting:precision_enchanting_table", "count": 1}
+}

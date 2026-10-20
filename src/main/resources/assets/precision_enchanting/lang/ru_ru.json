@@ -1,0 +1,18 @@
+{
+  "block.precision_enchanting.precision_enchanting_table": "Стол точного зачарования",
+  "screen.precision_enchanting.title": "Точное зачарование",
+  "screen.precision_enchanting.hold_item": "Держите в основной руке предмет для зачарования (или книгу)",
+  "screen.precision_enchanting.page": "Страница %s / %s",
+  "screen.precision_enchanting.cost": "Цена: %s ур. (у вас %s)",
+  "screen.precision_enchanting.apply": "Зачаровать",
+  "screen.precision_enchanting.close": "Закрыть",
+  "screen.precision_enchanting.off": "выкл",
+  "screen.precision_enchanting.removed": "Снято (несовместимо): %s",
+  "msg.precision_enchanting.success": "Зачаровано! Потрачено уровней: %s",
+  "msg.precision_enchanting.no_table": "Рядом нет стола точного зачарования",
+  "msg.precision_enchanting.no_item": "Держите один предмет для зачарования или книгу",
+  "msg.precision_enchanting.invalid": "Некорректный запрос зачарования",
+  "msg.precision_enchanting.conflict": "Выбраны несовместимые зачарования",
+  "msg.precision_enchanting.no_xp": "Недостаточно уровней опыта",
+  "msg.precision_enchanting.nothing": "Нечего менять"
+}

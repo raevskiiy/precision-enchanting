@@ -1,0 +1,20 @@
+{
+  "schemaVersion": 1,
+  "id": "precision_enchanting",
+  "version": "${version}",
+  "name": "Precision Enchanting",
+  "description": "A new enchanting table with exact control: pick enchantments and levels with sliders, no lapis, extended max levels.",
+  "authors": ["You"],
+  "license": "CC0-1.0",
+  "environment": "*",
+  "entrypoints": {
+    "main": ["com.example.precisionenchanting.PrecisionEnchanting"],
+    "client": ["com.example.precisionenchanting.client.PrecisionEnchantingClient"]
+  },
+  "depends": {
+    "fabricloader": ">=0.19.5",
+    "minecraft": "~26.3",
+    "java": ">=25",
+    "fabric-api": "*"
+  }
+}

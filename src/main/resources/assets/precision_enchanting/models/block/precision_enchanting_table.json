@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/cube_bottom_top",
+  "textures": {
+    "top": "precision_enchanting:block/precision_table_top",
+    "side": "precision_enchanting:block/precision_table_side",
+    "bottom": "precision_enchanting:block/precision_table_bottom"
+  }
+}

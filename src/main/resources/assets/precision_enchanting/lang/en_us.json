@@ -1,0 +1,18 @@
+{
+  "block.precision_enchanting.precision_enchanting_table": "Precision Enchanting Table",
+  "screen.precision_enchanting.title": "Precision Enchanting",
+  "screen.precision_enchanting.hold_item": "Hold an enchantable item (or a book) in your main hand",
+  "screen.precision_enchanting.page": "Page %s / %s",
+  "screen.precision_enchanting.cost": "Cost: %s levels (you have %s)",
+  "screen.precision_enchanting.apply": "Enchant",
+  "screen.precision_enchanting.close": "Close",
+  "screen.precision_enchanting.off": "off",
+  "screen.precision_enchanting.removed": "Removed incompatible: %s",
+  "msg.precision_enchanting.success": "Enchanted! Spent %s levels",
+  "msg.precision_enchanting.no_table": "No Precision Enchanting Table nearby",
+  "msg.precision_enchanting.no_item": "Hold a single enchantable item or a book",
+  "msg.precision_enchanting.invalid": "Invalid enchantment request",
+  "msg.precision_enchanting.conflict": "Incompatible enchantments selected",
+  "msg.precision_enchanting.no_xp": "Not enough experience levels",
+  "msg.precision_enchanting.nothing": "Nothing to change"
+}
