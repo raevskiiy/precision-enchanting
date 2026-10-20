@@ -154,8 +154,13 @@ public class PrecisionEnchantScreen extends Screen {
 		int cost = EnchantRules.totalCost(list, original, selected);
 		boolean creative = player.getAbilities().instabuild;
 		boolean enough = creative || player.experienceLevel >= cost;
-		MutableComponent c = Component.translatable("screen.precision_enchanting.cost", cost, player.experienceLevel);
-		if (!enough) c = c.withStyle(ChatFormatting.RED);
+		MutableComponent c;
+		if (cost < 0 && !creative) {
+			c = Component.translatable("screen.precision_enchanting.refund", -cost).withStyle(ChatFormatting.GREEN);
+		} else {
+			c = Component.translatable("screen.precision_enchanting.cost", Math.max(cost, 0), player.experienceLevel);
+			if (!enough) c = c.withStyle(ChatFormatting.RED);
+		}
 		setCentered(infoLine, c);
 		setCentered(noteLine, note);
 		applyButton.active = !selected.equals(original) && enough;

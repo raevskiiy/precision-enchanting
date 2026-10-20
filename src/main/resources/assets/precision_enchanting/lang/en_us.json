@@ -14,5 +14,7 @@
   "msg.precision_enchanting.invalid": "Invalid enchantment request",
   "msg.precision_enchanting.conflict": "Incompatible enchantments selected",
   "msg.precision_enchanting.no_xp": "Not enough experience levels",
-  "msg.precision_enchanting.nothing": "Nothing to change"
+  "msg.precision_enchanting.nothing": "Nothing to change",
+  "screen.precision_enchanting.refund": "Refund: +%s levels",
+  "msg.precision_enchanting.refunded": "Enchanted! Refunded %s levels"
 }

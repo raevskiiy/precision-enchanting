@@ -25,6 +25,8 @@ public final class EnchantRules {
 	public static final double RARITY_STEP = 0.10;
 	/** Extra multiplier per level above the vanilla maximum (level 6 sharpness = x1.35, 7 = x1.70 ...). */
 	public static final double OVERCAP_STEP = 0.35;
+	/** Share of an enchantment's cost refunded when it is removed or lowered (0.5 = 50%). Keep below 1.0 to prevent XP farming. */
+	public static final double REFUND_RATE = 0.5;
 	/** +5% total cost per enchantment on the item beyond the 3rd. */
 	public static final double STACK_STEP = 0.05;
 
@@ -109,20 +111,28 @@ public final class EnchantRules {
 		return power / POWER_DIVISOR * rarity * overcap;
 	}
 
-	/** Total XP levels to go from {@code original} to {@code target}. Lowering/removing is free. */
+	/**
+	 * Net XP levels to go from {@code original} to {@code target}.
+	 * Positive = you pay, negative = you get levels back. Refunds from removed/lowered
+	 * enchantments are first spent on new/raised ones (the balance is simply added up).
+	 */
 	public static int totalCost(List<Holder<Enchantment>> list, Map<String, Integer> original, Map<String, Integer> target) {
-		double sum = 0;
+		double add = 0;
+		double refund = 0;
 		int count = 0;
 		for (Holder<Enchantment> h : list) {
 			String id = idOf(h);
 			int o = original.getOrDefault(id, 0);
 			int t = target.getOrDefault(id, 0);
 			if (t > 0) count++;
-			if (t > o) sum += Math.max(0, rawCost(h, t) - rawCost(h, o));
+			if (t > o) add += rawCost(h, t) - rawCost(h, o);
+			else if (t < o) refund += (rawCost(h, o) - rawCost(h, t)) * REFUND_RATE;
 		}
-		if (sum <= 0) return 0;
 		double mult = 1.0 + STACK_STEP * Math.max(0, count - 3);
-		return Math.max(1, (int) Math.ceil(sum * mult));
+		double net = add * mult - refund;
+		if (net > 0) return (int) Math.ceil(net);
+		if (net < 0) return -(int) Math.floor(-net);
+		return 0;
 	}
 
 	private EnchantRules() {}

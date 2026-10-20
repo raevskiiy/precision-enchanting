@@ -14,5 +14,7 @@
   "msg.precision_enchanting.invalid": "Некорректный запрос зачарования",
   "msg.precision_enchanting.conflict": "Выбраны несовместимые зачарования",
   "msg.precision_enchanting.no_xp": "Недостаточно уровней опыта",
-  "msg.precision_enchanting.nothing": "Нечего менять"
+  "msg.precision_enchanting.nothing": "Нечего менять",
+  "screen.precision_enchanting.refund": "Возврат: +%s ур.",
+  "msg.precision_enchanting.refunded": "Готово! Возвращено уровней: %s"
 }

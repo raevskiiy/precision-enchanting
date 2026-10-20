@@ -82,9 +82,13 @@ public final class ServerHandler {
 			}
 		}
 
-		if (!creative && cost > 0) player.giveExperienceLevels(-cost);
+		if (!creative && cost != 0) player.giveExperienceLevels(-cost);
 		player.level().playSound(null, player.blockPosition(), SoundEvents.ENCHANTMENT_TABLE_USE, SoundSource.BLOCKS, 1.0F, 1.0F);
-		player.sendSystemMessage(Component.translatable("msg.precision_enchanting.success", cost), true);
+		if (!creative && cost < 0) {
+			player.sendSystemMessage(Component.translatable("msg.precision_enchanting.refunded", -cost), true);
+		} else {
+			player.sendSystemMessage(Component.translatable("msg.precision_enchanting.success", Math.max(cost, 0)), true);
+		}
 	}
 
 	private static boolean tableNearby(ServerPlayer player) {
