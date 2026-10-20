@@ -7,6 +7,6 @@ import net.minecraft.client.Minecraft;
 public class PrecisionEnchantingClient implements ClientModInitializer {
 	@Override
 	public void onInitializeClient() {
-		ModBlocks.openScreen = () -> Minecraft.getInstance().setScreen(new PrecisionEnchantScreen());
+		ModBlocks.openScreen = () -> Minecraft.getInstance().gui.setScreen(new PrecisionEnchantScreen());
 	}
 }

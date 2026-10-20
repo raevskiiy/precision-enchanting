@@ -64,11 +64,10 @@ public class PrecisionEnchantScreen extends Screen {
 		int cx = this.width / 2;
 		int top = Math.max(8, this.height / 2 - 105);
 
-		this.addRenderableWidget(new StringWidget(cx - 150, top, 300, 12, this.title, this.font).alignCenter());
+		this.addRenderableWidget(centered(this.title, top));
 
 		if (empty) {
-			this.addRenderableWidget(new StringWidget(cx - 150, top + 30, 300, 12,
-					Component.translatable("screen.precision_enchanting.hold_item"), this.font).alignCenter());
+			this.addRenderableWidget(centered(Component.translatable("screen.precision_enchanting.hold_item"), top + 30));
 			this.addRenderableWidget(Button.builder(Component.translatable("screen.precision_enchanting.close"), b -> this.onClose())
 					.bounds(cx - 50, top + 60, 100, 20).build());
 			return;
@@ -91,15 +90,14 @@ public class PrecisionEnchantScreen extends Screen {
 				.bounds(cx - 100, navY, 20, 20).build();
 		prev.active = page > 0;
 		this.addRenderableWidget(prev);
-		this.addRenderableWidget(new StringWidget(cx - 78, navY + 5, 156, 12,
-				Component.translatable("screen.precision_enchanting.page", page + 1, pages), this.font).alignCenter());
+		this.addRenderableWidget(centered(Component.translatable("screen.precision_enchanting.page", page + 1, pages), navY + 5));
 		Button next = Button.builder(Component.literal(">"), b -> { page++; this.rebuildWidgets(); })
 				.bounds(cx + 80, navY, 20, 20).build();
 		next.active = page < pages - 1;
 		this.addRenderableWidget(next);
 
-		infoLine = new StringWidget(cx - 150, navY + 26, 300, 12, Component.empty(), this.font).alignCenter();
-		noteLine = new StringWidget(cx - 150, navY + 40, 300, 12, Component.empty(), this.font).alignCenter();
+		infoLine = centered(Component.empty(), navY + 26);
+		noteLine = centered(Component.empty(), navY + 40);
 		this.addRenderableWidget(infoLine);
 		this.addRenderableWidget(noteLine);
 
@@ -110,6 +108,20 @@ public class PrecisionEnchantScreen extends Screen {
 				.bounds(cx + 2, navY + 56, 98, 20).build());
 
 		refreshInfo();
+	}
+
+	/** Text label centered horizontally (done manually: StringWidget has no alignCenter in 26.x). */
+	private StringWidget centered(Component text, int y) {
+		StringWidget w = new StringWidget(0, y, 10, 12, text, this.font);
+		setCentered(w, text);
+		return w;
+	}
+
+	private void setCentered(StringWidget w, Component text) {
+		int tw = this.font.width(text) + 2;
+		w.setMessage(text);
+		w.setWidth(tw);
+		w.setX(this.width / 2 - tw / 2);
 	}
 
 	private void onSlide(LevelSlider slider, int level) {
@@ -144,8 +156,8 @@ public class PrecisionEnchantScreen extends Screen {
 		boolean enough = creative || player.experienceLevel >= cost;
 		MutableComponent c = Component.translatable("screen.precision_enchanting.cost", cost, player.experienceLevel);
 		if (!enough) c = c.withStyle(ChatFormatting.RED);
-		infoLine.setMessage(c);
-		noteLine.setMessage(note);
+		setCentered(infoLine, c);
+		setCentered(noteLine, note);
 		applyButton.active = !selected.equals(original) && enough;
 	}
 
