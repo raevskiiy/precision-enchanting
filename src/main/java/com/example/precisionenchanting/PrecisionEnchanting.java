@@ -15,7 +15,7 @@ public class PrecisionEnchanting implements ModInitializer {
 	@Override
 	public void onInitialize() {
 		ModBlocks.register();
-		PayloadTypeRegistry.playC2S().register(ApplyEnchantsPayload.TYPE, ApplyEnchantsPayload.CODEC);
+		PayloadTypeRegistry.serverboundPlay().register(ApplyEnchantsPayload.TYPE, ApplyEnchantsPayload.CODEC);
 		ServerPlayNetworking.registerGlobalReceiver(ApplyEnchantsPayload.TYPE,
 				(payload, context) -> ServerHandler.handle(context.player(), payload));
 	}

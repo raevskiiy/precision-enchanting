@@ -78,13 +78,13 @@ public final class ServerHandler {
 			if (stack.isEmpty()) {
 				player.setItemInHand(InteractionHand.MAIN_HAND, result);
 			} else if (!player.getInventory().add(result)) {
-				player.drop(result, false);
+				net.minecraft.world.level.block.Block.popResource(player.level(), player.blockPosition(), result);
 			}
 		}
 
 		if (!creative && cost > 0) player.giveExperienceLevels(-cost);
 		player.level().playSound(null, player.blockPosition(), SoundEvents.ENCHANTMENT_TABLE_USE, SoundSource.BLOCKS, 1.0F, 1.0F);
-		player.displayClientMessage(Component.translatable("msg.precision_enchanting.success", cost), true);
+		player.sendSystemMessage(Component.translatable("msg.precision_enchanting.success", cost), true);
 	}
 
 	private static boolean tableNearby(ServerPlayer player) {
@@ -96,7 +96,7 @@ public final class ServerHandler {
 	}
 
 	private static void fail(ServerPlayer player, String key) {
-		player.displayClientMessage(Component.translatable("msg.precision_enchanting." + key), true);
+		player.sendSystemMessage(Component.translatable("msg.precision_enchanting." + key), true);
 	}
 
 	private ServerHandler() {}
